@@ -3,6 +3,9 @@ import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import GameRoom from '../views/GameRoom.vue';
 import MainMenu from '../views/MainMenu.vue';
+import Rooms from '../views/Rooms.vue';
+import Play from '../views/Play.vue';
+import Waiting from '../views/Waiting.vue';
 
 Vue.use(VueRouter);
 
@@ -29,6 +32,21 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+  },
+  {
+    path: '/rooms',
+    name: 'Rooms',
+    component: Rooms,
+  },
+  {
+    path: '/play/:id',
+    name: 'Play',
+    component: Play,
+  },
+  {
+    path: '/waiting/:id',
+    name: 'Waiting',
+    component: Waiting,
   },
 ];
 
