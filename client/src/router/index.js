@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import Rooms from '../views/Rooms.vue';
 import Play from '../views/Play.vue';
+import Waiting from '../views/Waiting.vue';
 
 Vue.use(VueRouter);
 
@@ -29,6 +30,11 @@ const routes = [
     path: '/play',
     name: 'Play',
     component: Play,
+  },
+  {
+    path: '/waiting',
+    name: 'Waiting',
+    component: Waiting,
   },
 ];
 
