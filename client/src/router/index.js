@@ -1,10 +1,22 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
+import GameRoom from '../views/GameRoom.vue';
+import MainMenu from '../views/MainMenu.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
+  {
+    path: '/lobby',
+    name: 'MainMenu',
+    component: MainMenu,
+  },
+  {
+    path: '/room/:id',
+    name: 'GameRoom',
+    component: GameRoom,
+  },
   {
     path: '/',
     name: 'Home',
