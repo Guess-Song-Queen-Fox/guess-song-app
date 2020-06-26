@@ -11,11 +11,11 @@
             <h1 style="color: white">Playing:</h1>
           </div>
 
-          <div class="column">
-            <div class="row d-flex justify-content-around mx-5">
+          <div class="column justify-content-around">
+            <div class="row d-flex justify-content-around mx-5 my-2">
               <div
                 class="card"
-                style="width: 18;"
+                style="width: 18rem; justify-content-around my-2 mx-2"
                 v-for="room in rooms"
                 :key="room.id"
                 @click="goToRooms(room.id)"
