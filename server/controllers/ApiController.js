@@ -17,9 +17,9 @@ class ApiController {
     
     static random(songs) {
         let result = []
-        while(result.length < 10){
+        while(result.length < 5){
             let random = Math.floor(Math.random()*songs.length)
-            result.push(songs[random]) 
+            result.push(songs[random])
         }
         return result
     }

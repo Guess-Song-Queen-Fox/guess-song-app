@@ -5,7 +5,22 @@
     <router-view/>
   </div>
 </template>
+<script>
+// @ is an alias to /src
+import axios from "axios";
+import io from 'socket.io-client';
+const baseUrl = 'https://qf-guess-song.herokuapp.com';
+// import socket from "@/config/socket";
 
+export default {
+  name: "App",
+  created() {
+      const socket = io(baseUrl);
+      this.$store.commit('SET_SOCKET', socket);
+  
+  }
+};
+</script>
 <style>
 
 #app {

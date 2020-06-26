@@ -35,8 +35,6 @@
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
 import axios from "axios";
-import io from 'socket.io-client';
-const baseUrl = 'http://localhost:3001';
 // import socket from "@/config/socket";
 
 export default {
@@ -57,8 +55,8 @@ export default {
     }
   },
   created() {
-      const socket = io(baseUrl);
-      this.$store.commit('SET_SOCKET', socket);
+      // const socket = io(baseUrl);
+      // this.$store.commit('SET_SOCKET', socket);
   
   }
 };

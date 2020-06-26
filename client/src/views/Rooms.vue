@@ -16,7 +16,7 @@
               <div
                 class="card"
                 style="width: 18rem; justify-content-around my-2 mx-2"
-                v-for="room in rooms"
+                v-for="room in availableRooms"
                 :key="room.id"
                 @click="goToRooms(room.id)"
               >
@@ -82,13 +82,19 @@ export default {
     };
   },
   computed: {
-    sockets() {
-      return this.$store.state.socket;
+        sockets(){
+            return this.$store.state.socket
+        },
+        rooms(){
+            return this.$store.state.rooms
+        },
+        availableRooms(){
+          let available = this.rooms.filter(room => {
+            return room.isPlay == false
+          })
+          return available
+        }
     },
-    rooms() {
-      return this.$store.state.rooms;
-    }
-  },
   created() {
     this.sockets.on("get-rooms", rooms => {
       console.log(rooms);
