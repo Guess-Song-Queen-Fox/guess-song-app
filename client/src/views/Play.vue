@@ -113,6 +113,7 @@ export default {
   methods: {
     triggerPlay() {
       this.currentSong = this.curentRoom.songs.pop()
+      this.answer = ''
       this.playSong()
       const dataRoom = {
         song: this.currentSong,

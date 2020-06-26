@@ -9,7 +9,7 @@
 // @ is an alias to /src
 import axios from "axios";
 import io from 'socket.io-client';
-const baseUrl = 'http://localhost:3001';
+const baseUrl = 'https://qf-guess-song.herokuapp.com';
 // import socket from "@/config/socket";
 
 export default {

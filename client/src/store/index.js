@@ -29,7 +29,7 @@ export default new Vuex.Store({
     getListSongs({commit}, payload) {
       return axios({
         method: 'GET',
-        url: `http://localhost:3001/songs/${payload.playlistId}`
+        url: `https://qf-guess-song.herokuapp.com/songs/${payload.playlistId}`
       })
     }
   },
