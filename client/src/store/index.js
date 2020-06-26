@@ -27,20 +27,10 @@ export default new Vuex.Store({
   },
   actions: {
     getListSongs({commit}, payload) {
-      axios({
+      return axios({
         method: 'GET',
         url: `http://localhost:3001/songs/${payload.playlistId}`
       })
-        .then(({data}) => {
-          const roomData = {
-            songs: data.songs,
-            roomId: payload.roomId
-          }
-          commit('SET_SONGS', roomData)
-        })
-        .catch(err => {
-          console.log(err)
-        })
     }
   },
   modules: {

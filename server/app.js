@@ -71,6 +71,11 @@ io.on("connection", (socket) => {
     socket.on('end-game', roomId => {
         socket.broadcast.to(`room${roomId}`).emit('end-game')
     })
+    socket.on('update-song', songs => {
+        const index = rooms.findIndex(i => i.id == songs.roomId)
+        rooms[index].songs = songs.songs
+        console.log(rooms[index])
+    })
 })
 
 server.listen(PORT, (_) => console.log(`listening on PORT: ${PORT}`))

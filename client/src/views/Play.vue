@@ -119,6 +119,7 @@ export default {
         roomId: this.$route.params.id
       }
       this.sockets.emit('room-play', dataRoom)
+      this.updateSongServer(this.curentRoom.songs)
     },
     playSong(){
       if(this.audio){
@@ -166,6 +167,13 @@ export default {
         }
         this.sockets.emit('success-guess', roomScore)
       }
+    },
+    updateSongServer(songs){
+      const data = {
+        roomId: this.$route.params.id,
+        songs
+      }
+      this.sockets.emit('update-song', data)
     }
   },
   created() {
@@ -196,6 +204,17 @@ export default {
       playlistId: this.curentRoom.genre
     }
     this.$store.dispatch('getListSongs', payload)
+      .then(({data}) => {
+          const roomData = {
+            songs: data.songs,
+            roomId: this.$route.params.id
+          }
+          this.$store.commit('SET_SONGS', roomData)
+          this.updateSongServer(data.songs)
+        })
+        .catch(err => {
+          console.log(err)
+        })
   },
   computed: {
         sockets(){
