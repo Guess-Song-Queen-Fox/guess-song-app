@@ -6,6 +6,7 @@ import MainMenu from '../views/MainMenu.vue';
 import Rooms from '../views/Rooms.vue';
 import Play from '../views/Play.vue';
 import Waiting from '../views/Waiting.vue';
+import Winner from '../views/Winner.vue';
 
 Vue.use(VueRouter);
 
@@ -47,6 +48,11 @@ const routes = [
     path: '/waiting/:id',
     name: 'Waiting',
     component: Waiting,
+  },
+  {
+    path: '/winner',
+    name: 'Winner',
+    component: Winner,
   },
 ];
 
