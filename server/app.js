@@ -16,26 +16,7 @@ app.use(routes)
 app.use(errorHandler)
 
 
-let rooms = [
-    {
-        id: 1,
-        name: "VS",
-        list_player: [],
-        admin: "Bujang",
-        genre: "7644900062",
-        isPlay: false,
-        songs: []
-    },
-    {
-        id: 2,
-        name: "co-op",
-        list_player: [],
-        admin: "Bujang",
-        genre: "7644761062",
-        isPlay: true,
-        songs: []
-    }
-]
+let rooms = []
 
 io.on("connection", (socket) => {
     console.log("user connected")
@@ -85,6 +66,10 @@ io.on("connection", (socket) => {
                 console.log(rooms[index])
             }
         })
+        io.to(`room${rooms[index].id}`).emit('update-score', rooms[index].list_player)
+    })
+    socket.on('end-game', roomId => {
+        socket.broadcast.to(`room${roomId}`).emit('end-game')
     })
 })
 

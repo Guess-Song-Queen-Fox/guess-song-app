@@ -19,6 +19,10 @@ export default new Vuex.Store({
     SET_SONGS(state, payload){
       const index = state.rooms.findIndex(i => i.id == payload.roomId)
       state.rooms[index].songs = payload.songs
+    },
+    UPDATE_SCORE(state, payload){
+      const index = state.rooms.findIndex(i => i.id == payload.roomId)
+      state.rooms[index].list_player = payload.list_player
     }
   },
   actions: {

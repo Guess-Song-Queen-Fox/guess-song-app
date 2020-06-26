@@ -16,7 +16,7 @@
               <div
                 class="card"
                 style="width: 18rem; justify-content-around my-2 mx-2"
-                v-for="room in rooms"
+                v-for="room in availableRooms"
                 :key="room.id"
                 @click="goToRooms(room.id)"
               >
