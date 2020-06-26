@@ -12,7 +12,7 @@
           </div>
 
           <div class="column">
-            <div class="row d-flex justify-content-between mx-5">
+            <div class="row d-flex justify-content-around mx-5">
               <div
                 class="card"
                 style="width: 18;"
