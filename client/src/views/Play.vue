@@ -50,7 +50,7 @@ export default {
       currentSong: {},
       audio: null,
       timer: null,
-      displayScore: false
+      finished: false
     };
   },
   methods: {
@@ -91,7 +91,7 @@ export default {
       }
     },
     displayScore(){
-      this.displayScore = true
+      this.finished = true
       console.log('game over')
     },
     getAnswer(){

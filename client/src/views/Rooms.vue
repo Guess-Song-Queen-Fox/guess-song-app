@@ -11,12 +11,22 @@
             <h1 style="color: white">Playing:</h1>
           </div>
 
-          <div class="card" style="width: 18;" v-for="room in availableRooms" :key="room.id" @click="goToRooms(room.id)">
-            <div class="card-body">
-              <h3 class="card-title">{{room.name}}</h3>
-              <br />
-              <p class="card-text">Players : {{room.list_player.length}}</p>
-              <br />
+          <div class="column justify-content-around">
+            <div class="row d-flex justify-content-around mx-5 my-2">
+              <div
+                class="card"
+                style="width: 18rem; justify-content-around my-2 mx-2"
+                v-for="room in rooms"
+                :key="room.id"
+                @click="goToRooms(room.id)"
+              >
+                <div class="card-body">
+                  <h3 class="card-title">{{room.name}}</h3>
+                  <br />
+                  <p class="card-text">Players : {{room.list_player.length}}</p>
+                  <br />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -26,10 +36,10 @@
           <center>
             <div id="createRoom">
               <h1>or Create a Room:</h1>
-              <br>
-              <br>
-              <br>
-              <br>
+              <br />
+              <br />
+              <br />
+              <br />
               <form class="my-4" @submit.prevent="createRoom" autocomplete="chrome-off">
                 <div class="form-group col-6">
                   <label for="newRoom" class="h2">Room Name</label>
@@ -52,14 +62,10 @@
                     <option value="7644919622">Indonesia</option>
                   </select>
                 </div>
-                <br>
-                <button
-                  id="addRoom"
-                  class="btn btn-dark btn-lg"
-                  style="color:white"
-                >Add New Room</button>
+                <br />
+                <button id="addRoom" class="btn btn-dark btn-lg" style="color:white">Add New Room</button>
               </form>
-              </div>
+            </div>
           </center>
         </div>
       </div>
@@ -71,10 +77,9 @@
 export default {
   data() {
     return {
-      genre:"",
-      roomname: "",
-
-    }
+      genre: "",
+      roomname: ""
+    };
   },
   computed: {
         sockets(){
@@ -92,30 +97,29 @@ export default {
     },
   created() {
     this.sockets.on("get-rooms", rooms => {
-        console.log(rooms)
-        this.$store.commit('SET_ROOMS',rooms)
-    })
-    this.getrooms()
+      console.log(rooms);
+      this.$store.commit("SET_ROOMS", rooms);
+    });
+    this.getrooms();
   },
   methods: {
-      getrooms(){
-          this.sockets.emit("get-rooms")
-      },
-      createRoom(){
-          const data = 
-          {
-            name: this.roomname,
-            list_player: [],
-            admin: localStorage.username,
-            genre: this.genre
-          }
-          this.sockets.emit("create-room",data)
-          this.roomname = ""
-          this.genre = ""
-      },
-      goToRooms(id){
-        this.$router.push(`/waiting/${id}`)
-      }
+    getrooms() {
+      this.sockets.emit("get-rooms");
+    },
+    createRoom() {
+      const data = {
+        name: this.roomname,
+        list_player: [],
+        admin: localStorage.username,
+        genre: this.genre
+      };
+      this.sockets.emit("create-room", data);
+      this.roomname = "";
+      this.genre = "";
+    },
+    goToRooms(id) {
+      this.$router.push(`/waiting/${id}`);
+    }
   }
 };
 </script>
