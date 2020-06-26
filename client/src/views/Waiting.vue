@@ -18,7 +18,7 @@
               <div class="card" style="width: 18rem;" v-for="(player,index) in curentRoom.list_player" :key="index">
                 <div class="card-body">
                   <h5 class="card-title">Players {{index + 1 }}</h5>
-                  <p class="card-text">{{player}}</p>
+                  <p class="card-text">{{player.name}}</p>
                 </div>
               </div>
             </div>

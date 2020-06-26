@@ -11,7 +11,7 @@
             <h1 style="color: white">Playing:</h1>
           </div>
 
-          <div class="card" style="width: 18;" v-for="room in rooms" :key="room.id" @click="goToRooms(room.id)">
+          <div class="card" style="width: 18;" v-for="room in availableRooms" :key="room.id" @click="goToRooms(room.id)">
             <div class="card-body">
               <h3 class="card-title">{{room.name}}</h3>
               <br />
@@ -82,6 +82,12 @@ export default {
         },
         rooms(){
             return this.$store.state.rooms
+        },
+        availableRooms(){
+          let available = this.rooms.filter(room => {
+            return room.isPlay == false
+          })
+          return available
         }
     },
   created() {
